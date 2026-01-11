@@ -3,6 +3,12 @@ package core.basesyntax;
 import java.util.Random;
 
 public class FigureSupplier {
+    private static final int FIGURE = 5;
+    private static final double MIN = 1.0;
+    private static final double MAX = 20.0;
+    private static final String DEFAULT_COLOR = "white";
+    private static final double DEFAULT_RADIUS = 10.0;
+
     private final ColorSupplier colorSupplier = new ColorSupplier();
     private final Random random = new Random();
 
@@ -12,24 +18,16 @@ public class FigureSupplier {
 
         switch (figureType) {
             case 0:
-                double side = 1 + random.nextDouble() * 20;
-                return new Square(color, side);
+                return new Square(color, randomSize());
             case 1:
-                double width = 1 + random.nextDouble() * 20;
-                double hight = 1 + random.nextDouble() * 20;
-                return new Rectangle(color, width, hight);
+                return new Rectangle(color, randomSize(), randomSize());
             case 2:
                 double radius = 1 + random.nextDouble() * 20;
                 return new Circle(color, radius);
             case 3:
-                double firstLeg = 1 + random.nextDouble() * 20;
-                double secondLeg = 1 + random.nextDouble() * 20;
-                return new RightTriangle(color, firstLeg, secondLeg);
+                return new RightTriangle(color, randomSize(), randomSize());
             case 4:
-                double base1 = 1 + random.nextDouble() * 20;
-                double base2 = 1 + random.nextDouble() * 20;
-                double height = 1 + random.nextDouble() * 20;
-                return new IsoscelesTrapezoid(color, base1, base2, height);
+                return new IsoscelesTrapezoid(color, randomSize(), randomSize(), randomSize());
             default:
                 return getDefaultFigure();
         }
@@ -37,5 +35,8 @@ public class FigureSupplier {
 
     public Figure getDefaultFigure() {
         return new Circle("white", 10);
+    }
+    private double randomSize() {
+        return MIN + random.nextDouble() * (MAX - MIN);
     }
 }

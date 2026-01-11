@@ -18,10 +18,11 @@ public abstract class Figure {
     public abstract String getDetails();
 
     public void draw() {
-        System.out.println("Figure: " + getFigureName()
-                + ", area: " + getArea()
-                + ", sq. units: " + getDetails()
-                + ", color: " + getColor()
+        System.out.println(
+                "Figure: " + getFigureName()
+                        + ", area: " + getArea() + " sq. units, "
+                        + getDetails()
+                        + ", color: " + getColor()
         );
     }
 }
