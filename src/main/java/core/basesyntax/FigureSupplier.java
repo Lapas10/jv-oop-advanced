@@ -36,6 +36,7 @@ public class FigureSupplier {
     public Figure getDefaultFigure() {
         return new Circle("white", 10);
     }
+
     private double randomSize() {
         return MIN + random.nextDouble() * (MAX - MIN);
     }
